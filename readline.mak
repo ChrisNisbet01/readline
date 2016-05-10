@@ -27,7 +27,7 @@ COMMON_OBJ=$(OUTDIR)/read_line.o $(OUTDIR)/readline.o
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(OUTDIR)/read_line.o $(OUTDIR)/readline.o 
 
-COMPILE=gcc -c    -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) "$<"
+COMPILE=gcc -c   "-D_GNU_SOURCE" -g -o "$(OUTDIR)/$(*F).o" $(CFG_INC) "$<"
 LINK=gcc  -g -o "$(OUTFILE)" $(OBJ) $(CFG_LIB)
 
 # Pattern rules
@@ -68,7 +68,7 @@ COMMON_OBJ=$(OUTDIR)/read_line.o $(OUTDIR)/readline.o
 OBJ=$(COMMON_OBJ) $(CFG_OBJ)
 ALL_OBJ=$(OUTDIR)/read_line.o $(OUTDIR)/readline.o 
 
-COMPILE=gcc -c   -o "$(OUTDIR)/$(*F).o" $(CFG_INC) "$<"
+COMPILE=gcc -c  "-D_GNU_SOURCE" -o "$(OUTDIR)/$(*F).o" $(CFG_INC) "$<"
 LINK=gcc  -o "$(OUTFILE)" $(OBJ) $(CFG_LIB)
 
 # Pattern rules

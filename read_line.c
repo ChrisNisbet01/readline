@@ -9,7 +9,7 @@
 
 #define MIN_ALLOC 64
 
-int get_char_with_timeout(int const fd, unsigned int timeout_seconds, char * const character_read)
+int get_char_with_timeout(int const fd, unsigned int const timeout_seconds, char * const character_read)
 {
     fd_set fdset;
     int select_result;

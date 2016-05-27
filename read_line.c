@@ -88,7 +88,6 @@ int read_line_with_timeout(char * * output_buffer, size_t * output_buffer_size, 
     for (;;)
     {
         char ch;
-        ssize_t bytes_read;
         int get_char_result;
 
         get_char_result = get_char_with_timeout(fd, timeout_seconds, &ch);

@@ -1,62 +1,11 @@
 #include "read_line.h"
+#include "get_char_with_timeout.h"
 
-#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include <stdio.h>
-#include <sys/select.h>
 
 #define MIN_ALLOC 64
-
-int get_char_with_timeout(int const fd, unsigned int const timeout_seconds, char * const character_read)
-{
-    fd_set fdset;
-    int select_result;
-    int get_char_result;
-    struct timeval timeout;
-    struct timeval * timeout_to_use;
-
-    if (timeout_seconds > 0)
-    {
-        timeout.tv_sec = timeout_seconds;
-        timeout.tv_usec = 0;
-        timeout_to_use = &timeout;
-    }
-    else
-    {
-        timeout_to_use = NULL;
-    }
-
-	FD_ZERO(&fdset);
-    FD_SET(fd, &fdset);
-
-    select_result = TEMP_FAILURE_RETRY(select(fd + 1, &fdset, NULL, NULL, timeout_to_use));
-
-    if (select_result == -1)
-    {
-        get_char_result = -1;
-        goto done;
-    }
-
-	if (select_result == 0)
-    {
-        errno = ETIMEDOUT;
-        get_char_result = -1;
-        goto done;
-    }
-
-	if (!FD_ISSET(fd, &fdset)) /* Shouldn't happen. */
-    {
-        get_char_result = -1;
-        goto done;
-    }
-
-    get_char_result = TEMP_FAILURE_RETRY(read(fd, character_read, sizeof *character_read));
-
-done:
-    return get_char_result;
-}
 
 int read_line_with_timeout(char * * output_buffer, size_t * output_buffer_size, int fd, unsigned int timeout_seconds)
 {

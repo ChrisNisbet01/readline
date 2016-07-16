@@ -59,7 +59,7 @@ int read_line_with_timeout(char * * output_buffer, size_t * output_buffer_size, 
             readline_result = -1;
             goto done;
         }
-        /* read a chaaracter */
+        /* read a character */
 
         /* Ensure we have space to write it to the output buffer */
         if (total_bytes_read >= *output_buffer_size - 1)    /* must be space for the new char and the NUL terminator */

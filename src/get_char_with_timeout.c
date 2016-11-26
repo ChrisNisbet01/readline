@@ -5,6 +5,19 @@
 #include <sys/select.h>
 #include <stddef.h>
 
+#if !defined(TEMP_FAILURE_RETRY)
+
+/* Evaluate EXPRESSION, and repeat as long as it returns -1 with `errno'
+   set to EINTR.  */
+
+#define TEMP_FAILURE_RETRY(expression) \
+  (__extension__							      \
+    ({ long int __result;						      \
+       do __result = (long int) (expression);				      \
+       while (__result == -1L && errno == EINTR);			      \
+       __result; }))
+#endif
+
 int get_char_with_timeout(int const fd, unsigned int const timeout_seconds, char * const character_read)
 {
     fd_set fdset;

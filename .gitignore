@@ -11,12 +11,8 @@
 *.log
 *.status
 *.sub
-/configure
 /depcomp
 /install-sh
 /stamp-h1
-*.in
-/libtool
-/ltmain.sh
 /Makefile
 /missing

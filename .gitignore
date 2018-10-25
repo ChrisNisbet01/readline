@@ -10,7 +10,6 @@
 *.h.in
 *.log
 *.status
-*.sub
 /depcomp
 /stamp-h1
 /Makefile

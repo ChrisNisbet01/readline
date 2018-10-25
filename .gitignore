@@ -12,7 +12,6 @@
 *.status
 *.sub
 /depcomp
-/install-sh
 /stamp-h1
 /Makefile
 /missing

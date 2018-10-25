@@ -3,7 +3,6 @@
 *.vpwhistu
 *.vtg
 /autom4te.cache/
-*.m4
 /compile
 /config.h
 *.h.in

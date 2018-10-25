@@ -4,4 +4,4 @@
 *.lo
 *.o
 /Makefile
-*.in
+

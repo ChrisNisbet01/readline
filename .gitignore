@@ -6,7 +6,6 @@
 /config.h
 *.log
 *.status
-/depcomp
 /stamp-h1
 /Makefile
 
